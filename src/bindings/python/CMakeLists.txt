@@ -224,9 +224,9 @@ target_compile_definitions(PyOpenColorIO
 )
 
 if(WIN32)
-    set(_Python_VARIANT_PATH "lib${LIB_SUFFIX}/site-packages")
+    set(_Python_VARIANT_PATH "lib${LIB_SUFFIX}/site-packages/PyOpenColorIO")
 else()
-    set(_Python_VARIANT_PATH "lib${LIB_SUFFIX}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages")
+    set(_Python_VARIANT_PATH "lib${LIB_SUFFIX}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/PyOpenColorIO")
 endif()
 
 # Create an internal global variable to access it in another scope but not publicly visible
@@ -236,3 +236,5 @@ set(PYTHON_VARIANT_PATH ${_Python_VARIANT_PATH} CACHE INTERNAL "")
 install(TARGETS PyOpenColorIO
     LIBRARY DESTINATION ${_Python_VARIANT_PATH}
 )
+
+install(FILES __init__.py DESTINATION ${_Python_VARIANT_PATH})
